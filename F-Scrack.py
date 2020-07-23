@@ -435,7 +435,7 @@ def get_ip_list(ip):
                 ip_list.append(numtoip(ip_num))
         else:
             print '-h wrong format'
-    elif '.ini' in ip:
+    elif '.txt' in ip:
         ip_config = open(ip,'r')
         for ip in ip_config:
             ip_list.extend(get_ip_list(ip.strip()))
@@ -484,17 +484,17 @@ if __name__=="__main__":
     msg = '''
 Usage:
         python F-Scrack.py -h 192.168.1 [-p 21,80,3306] [-m 50] [-t 10]
-        -h 必须输入的参数，支持ip(192.168.1.1)，ip段（192.168.1），ip范围指定（192.168.1.1-192.168.1.254）,ip列表文件（ip.ini），最多限制一次可扫描65535个IP。
+        -h 必须输入的参数，支持ip(192.168.1.1)，ip段（192.168.1），ip范围指定（192.168.1.1-192.168.1.254）,ip列表文件（ip.txt），最多限制一次可扫描65535个IP。
         -p 指定要扫描端口列表，多个端口使用,隔开 例如：1433,3306,5432。未指定即使用内置默认端口进行扫描(21,23,1433,3306,5432,6379,9200,11211,27017)
         -m 指定线程数量 默认100线程
         -t 指定请求超时时间。
         -d 指定密码字典。
         -n 不进行存活探测(ICMP)直接进行扫描。
 Example:
-        python Scrack.py -h 10.111.1
-        python Scrack.py -h 192.168.1.1 -d pass.txt
-        python Scrack.py -h 10.111.1.1-10.111.2.254 -p 3306,5432 -m 200 -t 6
-        python NAScan.py -h ip.ini -n
+        python F-Scrack.py -h 10.111.1
+        python F-Scrack.py -h 192.168.1.1 -d pass.txt
+        python F-Scrack.py -h 10.111.1.1-10.111.2.254 -p 3306,5432 -m 200 -t 6
+        python F-Scrack.py -h ip.txt -n
 
     '''
     if len(sys.argv) < 2:
